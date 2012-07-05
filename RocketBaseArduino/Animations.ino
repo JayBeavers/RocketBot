@@ -21,9 +21,9 @@ int AnimationCommandState()
   else if (animation == FiredAnimation) return 5;
 }
 
-void AnimationCommand(int animationId)
+void AnimationCommand()
 {
-  switch(animationId)
+  switch(reflectaFunctions::pop())
   {
     case '0':
       animation = IdleAnimation;

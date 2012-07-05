@@ -1,4 +1,7 @@
+#include <Arduino.h>
 #include <Servo.h>
+#include <ReflectaFramesSerial.h>
+#include <ReflectaFunctions.h>
 
 #define RedLight 9
 #define GreenLight 10
@@ -38,93 +41,25 @@ void setup() {
   pan.attach(PanServo);
   tilt.attach(TiltServo);
 
-  Serial.begin(9600);
-
   pan.write(90);
   tilt.write(120);
+  
+  reflectaFrames::setup(9600);
+  reflectaFunctions::setup();
+  
+  reflectaFunctions::bind("RBOT1", AnimationCommand);
+  reflectaFunctions::bind("RBOT1", FireCommand);
+  reflectaFunctions::bind("RBOT1", LightCommand);
+  reflectaFunctions::bind("RBOT1", PanCommand);
+  reflectaFunctions::bind("RBOT1", TiltCommand);
+  reflectaFunctions::bind("RBOT1", CompressorCommand);
+  reflectaFunctions::bind("RBOT1", ValveCommand);
 }
 
 void loop(){
 
-  checkForCommand();
+  reflectaFrames::loop();
   sendHeartbeat();
-
   animationLoop();  
-  
-  delay(5);
-}
-
-void checkForCommand()
-{
-  // Our commands consist of four bytes in the form of a SLIP message
-  //   192 -- END marker
-  //   ### -- Command Id
-  //   ### -- Command Parameter
-  //   192 -- END marker
-  
-  // We do not currently handle ESCape logic per SLIP as we use ASCII codes for our data and we never
-  // Send a data byte with a value of 192
-  
-  if (Serial.available() >= 4) // Allow for a 2nd command coming in as this one is being processed
-  {
-    int start = Serial.read();
-    while (start != 192 && Serial.available())
-    {
-      // We started with a corrupt or partial packet, clear out the buffer
-      start = Serial.read();
-    }
-    
-    if (!Serial.available())
-    {
-      // No valid packet was found
-      return;
-    }
-    
-    int commandId = Serial.read();
-    while (commandId == 192 && Serial.available()) 
-    {
-      // We picked up the end character of a previous packet, so read until we find the first
-      // data byte of the new packet
-      commandId = Serial.read();
-    }
-
-    if (!Serial.available())
-    {
-      // No valid packet was found, just corrupt data
-      return;
-    }
-    
-    int parameter = Serial.read();
-    int endMarker = Serial.read();
-    if (endMarker != 192)
-    {
-      // Malformed packet, throw away the result
-      return;
-    }
-    
-    switch (commandId)
-    {
-      case 'a':
-        AnimationCommand(parameter);
-        break;
-      case 'f':
-        FireCommand(parameter);
-        break;
-      case 'l':
-        LightCommand(parameter);
-        break;
-      case 'p':
-        PanCommand(parameter);
-        break;
-      case 't':
-        TiltCommand(parameter);
-        break;
-      case 'c':
-        CompressorCommand(parameter);
-        break;
-      case 'v':
-        ValveCommand(parameter);
-        break;
-    }
-  }
+  delay(5); // Delay needed for animation loop timing
 }

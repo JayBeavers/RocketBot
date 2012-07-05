@@ -1,4 +1,4 @@
-void FireCommand(int valveOpenDuration)  // ' ' == 32, '#' == 35, '-' == 45, '7' == 55
+void FireCommand()  // ' ' == 32, '#' == 35, '-' == 45, '7' == 55
 {
  digitalWrite(ValveClosed, LOW);
  digitalWrite(ValveOpen, HIGH);
@@ -7,37 +7,39 @@ void FireCommand(int valveOpenDuration)  // ' ' == 32, '#' == 35, '-' == 45, '7'
  digitalWrite(ValveClosed, HIGH);
  digitalWrite(ValveOpen, LOW);
 
- delay(valveOpenDuration);
+ delay(reflectaFunctions::pop());
  digitalWrite(ValveClosed, LOW);
  
  animation = FiredAnimation;
 }
 
-void LightCommand(int parameter)
+void LightCommand()
 {
+  int parameter = reflectaFunctions::pop();
+ 
   digitalWrite(RedLight, ((parameter - '0') & 0x01) == 0x01);
   digitalWrite(GreenLight, ((parameter - '0') & 0x02) == 0x02);
   digitalWrite(BlueLight, ((parameter - '0') & 0x04) == 0x04);
 }
 
-void PanCommand(int parameter)
+void PanCommand()
 {
-  pan.write(parameter);
+  pan.write(reflectaFunctions::pop());
 }
 
-void TiltCommand(int parameter)
+void TiltCommand()
 {
-  tilt.write(parameter);
+  tilt.write(reflectaFunctions::pop());
 }
 
-void CompressorCommand(int parameter)
+void CompressorCommand()
 {
-  digitalWrite(Compressor, parameter == '1');
+  digitalWrite(Compressor, reflectaFunctions::pop() == '1');
 }
 
-void ValveCommand(int parameter)
+void ValveCommand()
 {
-  switch (parameter)
+  switch (reflectaFunctions::pop())
   {
     case '0':
       digitalWrite(ValveOpen, LOW);
