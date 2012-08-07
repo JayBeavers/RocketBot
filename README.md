@@ -21,3 +21,7 @@ Like RocketBaseArduino, the PC-side source code has not been published due to a 
 ## [Schematics](https://github.com/JayBeavers/RocketBot/tree/master/Schematics) ##
 
 I've uploaded the diagrams I used with a lasercutter to make the RocketBot plates.  There's also a layout of the pneumatic parts and an early draft of the power system used to enable the Arduino to control high current 12v components such as the compressor, industrial warning light, and pneumatic valves.
+
+## [Parts List](PartsList.md) ##
+
+List of parts used to create RocketBot
