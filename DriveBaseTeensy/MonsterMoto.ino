@@ -86,6 +86,6 @@ void Drive()
 
 void ReadCurrent()
 {
-  reflectaFunctions::push(analogRead(MOTOR_0_CURRENT));
-  reflectaFunctions::push(analogRead(MOTOR_1_CURRENT));
+  reflectaFunctions::push16(analogRead(MOTOR_0_CURRENT));
+  reflectaFunctions::push16(analogRead(MOTOR_1_CURRENT));
 }
