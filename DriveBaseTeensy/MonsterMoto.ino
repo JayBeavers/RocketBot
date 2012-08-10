@@ -56,8 +56,8 @@ void BrakeGround()
 
 void Drive()
 {
-  int16_t power0 = reflectaFunctions::pop();
-  int16_t power1 = reflectaFunctions::pop();
+  int8_t power0 = reflectaFunctions::pop();
+  int8_t power1 = reflectaFunctions::pop();
   
   if (power0 < 0)
   {
