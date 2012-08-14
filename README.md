@@ -24,4 +24,4 @@ I've uploaded the diagrams I used with a lasercutter to make the RocketBot plate
 
 ## [Parts List](https://github.com/JayBeavers/RocketBot/blob/master/PartsList.md) ##
 
-List of parts used to create RocketBot
+List of parts used to create RocketBot.
