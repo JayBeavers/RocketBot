@@ -12,9 +12,9 @@ RocketBaseArduino is controlled using the [Reflecta](https://github.com/JayBeave
 
 The PC-side source code has not been published.  I've switched from a C#/XNA application to a [nodejs client](https://github.com/JayBeavers/Reflecta/tree/master/NodeClient) but the port is not yet complete.  The previous application used XBox Wireless Controller buttons to switch between animations and initiate launch and the thumb stick to drive the servos.
 
-## [DriveBaseTeensy](https://github.com/JayBeavers/RocketBot/tree/master/DriveBaseTeensy) ##
+## [ReflectaMonsterMoto](https://github.com/JayBeavers/ReflectaMonsterMoto) ##
 
-DriveBaseTeensy is the source code for the [Teensy (Arduino-compatible board)](http://www.pjrc.com/teensy/) and [SparkFun Monster Moto Shield](https://www.sparkfun.com/products/10182) system that runs the RocketBot drive train.
+ReflectaMonsterMoto is the source code for the [Teensy (Arduino-compatible board)](http://www.pjrc.com/teensy/) and [SparkFun Monster Moto Shield](https://www.sparkfun.com/products/10182) system that runs the RocketBot drive train.
 
 Like RocketBaseArduino, the PC-side source code has not been published due to a switch from C#/XNA over to nodejs.  The previous application used an XBox Wireless Controller thumbstick to control the drive train.  The logic behind this control was subject to much hacking over the course of Maker Faire as I adjusted the acceleration curve, turn rate, etc. to make the robot deftly controllable through the heavy crowds.
 
