@@ -53,4 +53,3 @@ void sendHeartbeat()
     lastHeartbeat = millis();
   }
 }
-
