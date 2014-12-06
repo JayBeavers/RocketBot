@@ -1,4 +1,5 @@
 # RocketBot #
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/JayBeavers/RocketBot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 RocketBot is a project to create a robot that uses an air compressor to launch straw rockets that was demonstrated at the 2012 Maker Faires in San Mateo CA and Seattle WA.  Its journey is chronicalled at [http://jaybeavers.org](http://jaybeavers.org).
 
